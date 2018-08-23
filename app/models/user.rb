@@ -4,8 +4,8 @@ class User < ActiveRecord::Base
   has_secure_password
 
   def slug
-    if name
-      [name.parameterize].join("-")
+    if username
+      [username.parameterize].join("-")
     end
   end
 
