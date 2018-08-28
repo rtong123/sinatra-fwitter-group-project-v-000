@@ -45,13 +45,9 @@ class UsersController < ApplicationController
     else
       redirect '/'
     end
-
-    # if logged_in?
-    #   redirect '/tweets'
-    # else
-    #   redirect '/login'
-    # end
   end
+
+
 
   get '/tweets/:slug' do
     @tweets = Tweet.find_by(params[:slug])
