@@ -6,11 +6,12 @@ class ApplicationController < Sinatra::Base
     set :public_folder, 'public'
     set :views, 'app/views'
     enable :sessions
+    set :session_secret, "fwitter_secret"
   end
 
   get '/' do
     if logged_in?
-    erb :'tweets/tweets'
+    redirect '/tweets'
   else
     erb :index
     end

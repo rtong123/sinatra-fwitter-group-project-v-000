@@ -1,3 +1,8 @@
 <h1> "Welcome,"</h1>
 
-<a href="/login">Log Out</a>
+<%Tweet.all.each do |tweet|%>
+<%=tweet.content%>
+<%end%>
+
+
+<a href="/logout">Log Out</a>
