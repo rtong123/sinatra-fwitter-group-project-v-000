@@ -23,10 +23,16 @@ class TweetsController < ApplicationController
         @tweet = current_user.tweets.build(content: params[:content])
         @tweet.save
         redirect "/tweets/#{@tweet.id}"
-      end
+      else
+        redirect '/tweets/new'
+      ends
     else
       redirect '/login'
     end
+  end
+
+  get '/tweets/show' do
+    erb :'/tweets/show_tweet'
   end
 
   get '/tweets/:id/edit' do
