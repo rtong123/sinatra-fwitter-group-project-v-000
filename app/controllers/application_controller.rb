@@ -9,8 +9,13 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/' do
+    if logged_in?
+    erb :'tweets/tweets'
+  else
     erb :index
+    end
   end
+
 
 
   helpers do
@@ -18,5 +23,5 @@ class ApplicationController < Sinatra::Base
       !!session[:user_id]
     end
   end
-  
+
 end
