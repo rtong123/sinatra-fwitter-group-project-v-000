@@ -42,26 +42,30 @@ end
 
   get '/tweets/:id/edit' do
     @tweet = Tweet.find_by(id: params[:id])
-    if logged_in?
-      erb :'/tweets/edit_tweet'
+    if logged_in? && @tweet.content != ""
+        erb :'/tweets/edit_tweet'
     else
-      redirect '/login'
+        redirect '/login'
     end
   end
 
   patch '/tweets/:id' do
-    @tweet = Tweet.find_by_slug(params[:slug])
-    @tweet.save
+    @tweet = Tweet.find_by(id: params[:id])
+    if params[:content] != ""
+      @tweet.update(content: params[:content])
+      @tweet.save
+    else
+      redirect "/tweets/#{@tweet.id}/edit"
+    end
   end
 
   get '/tweets/:id/delete' do
     if current_user
-      binding.pry
       @tweet = Tweet.find_by(id: params[:id])
     end
   end
 
-  post '/tweets/:id/delete' do
+  patch '/tweets/:id/delete' do
 
   end
 
