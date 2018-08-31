@@ -60,7 +60,7 @@ end
   end
 
 
-  delete '/tweets/:id/delete' do
+  delete '/tweets/:id' do
     if logged_in?
       @tweet = Tweet.find_by(id: params[:id])
       if @tweet.user_id == current_user
