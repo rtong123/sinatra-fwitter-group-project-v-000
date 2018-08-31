@@ -62,7 +62,8 @@ end
 
   delete '/tweets/:id/delete' do
     if logged_in? && current_user
-      @tweet = current_user.tweets.find_by(id: params[:id]).destroy
+      @tweet = current_user.tweets.find_by(id: params[:id])
+      @tweet.destroy
       redirect '/tweets'
     else
       redirect'/tweets'
@@ -70,7 +71,7 @@ end
       redirect '/login'
     end
   end
-end
+
 
 
 end
