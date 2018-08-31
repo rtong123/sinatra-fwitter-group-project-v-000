@@ -70,6 +70,8 @@ end
   else
       redirect '/login'
     end
+  end
+end
 
 
 end
