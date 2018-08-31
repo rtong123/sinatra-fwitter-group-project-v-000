@@ -65,6 +65,9 @@ end
       @tweet = current_user.tweets.find_by(id: params[:id]).destroy
       redirect '/tweets'
     else
+      redirect'/tweets'
+    end
+  else
       redirect '/login'
     end
   end
